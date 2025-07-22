@@ -3,7 +3,6 @@ from clang.cindex import Index, CursorKind, TranslationUnit, Config, Cursor
 from typing import Dict, Tuple
 import sys
 import argparse
-import pudb
 
 def print_node_tree(node: Cursor, indent=0):
     """Recursively print the AST node tree starting from the given node."""
