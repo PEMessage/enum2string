@@ -43,7 +43,7 @@ def generate_error_msg_function(enum: Cursor) -> str:
 
     function_name = f"error_msg_{enum_name.lower()}"
 
-    code = f"""std::string {function_name}({enum_name} err) {{
+    code = f"""const char* {function_name}({enum_name} err) {{
     switch(err) {{
 """
 
