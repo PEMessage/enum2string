@@ -1,0 +1,23 @@
+version = 1
+revision = 2
+requires-python = ">=3.12"
+
+[[package]]
+name = "clang"
+version = "14.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/5b/1f/0cde370a9b3f51d8aee106c50d0acf84f088de0d8c99e65b924443314c13/clang-14.0.tar.gz", hash = "sha256:0fe241386d3b780666e032d8c2e482b1d434880185c685071aa38b78317e969f", size = 31219, upload-time = "2022-02-12T17:56:59.807Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/08/ae/4c5e775b3bafc86fde8db6e4f3fed014651312f33b5fd0468e4bf6848187/clang-14.0-py3-none-any.whl", hash = "sha256:049c7f7740f46f733fc96b5395910ffc57f56d4d61bca65b5556e9772d146deb", size = 31266, upload-time = "2022-02-12T17:56:58.082Z" },
+]
+
+[[package]]
+name = "enum2string"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "clang" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "clang", specifier = "==14" }]
