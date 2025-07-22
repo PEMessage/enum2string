@@ -14,3 +14,6 @@ dev = [
     "ptpython>=3.0.30",
     "pudb>=2025.1",
 ]
+
+[project.scripts]
+enum2string = "main:main"  # Note: now pointing to root main.py
