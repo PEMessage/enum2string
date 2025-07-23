@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from clang.cindex import Index, CursorKind, TranslationUnit, Config, Cursor
-from typing import Dict, Tuple
 import sys
 import argparse
 
@@ -22,13 +21,15 @@ def parse_cppfile(cpp_file: str) -> TranslationUnit:
                      args=['-x', 'c++'])
     return tu
 
-def get_enumclass(node: Cursor) -> Cursor:
-    return  [
-        child for child in node.get_children()
-        if child.kind == CursorKind.ENUM_DECL and
-        child.is_definition()
-    ]
-
+def get_enumclass(node: Cursor) -> list[Cursor]:
+    enums = []
+    for child in node.get_children():
+        if child.kind == CursorKind.ENUM_DECL and child.is_definition():
+            enums.append(child)
+        # Recursively search in namespaces
+        elif child.kind == CursorKind.NAMESPACE:
+            enums.extend(get_enumclass(child))
+    return enums
 
 
 def generate_error_msg_function(enum: Cursor) -> str:
